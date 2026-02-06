@@ -11,6 +11,9 @@ tailmon.state
 # Backup files
 backup/
 
+# Project documentation files
+PROJECT.txt
+
 # IDE files
 .vscode/
 .idea/
