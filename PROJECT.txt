@@ -1,0 +1,15 @@
+
+Projektname:  TailMon
+Zweck:  TailMon soll die Änderungen bei den Online- und Offline-Zuständen einzelner Geräte, die alle mit Tailscale verbunden sind, überwachen und melden, wenn sich ein Gerät an- oder abgemeldet (oder den Zustand geändert) hat.
+
+Überlegungen:  Auf diesem Server ist Tailscale installiert. Es existiert eine Commandline Pfüffunktion. Wir ergänzen das Script tailmon.sh mit einer Datei tailmon.conf, die generelle Settings enthält (wären zu ermitteln) noch diese Festlegungen:
+~~~
+[Gerätename]
+OnOnline=ntfy,titel,meldung
+OnOffline=ntfy,titel,meldung
+OnChange=ntfy,titel,meldung
+~~~
+... (beliebig viele)
+Außer "ntfy" welches das Notify Tool nutzt (Generelle Settings ebenfalls in dieser Datei) könnten noch "shell" mit Parameter Befehl mit seinen Parametern sinnvoll sein.
+
+Ziel: Service, der regelmäßige Statusüberprüfungen vornimmt und gemäß der Handlungstabelle Meldungen verschickt oder andere Aktionen ausführt. Der Service muss Reboot-Sicher sein.

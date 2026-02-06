@@ -1,0 +1,39 @@
+# TailMon Konfigurationsdatei
+# Kommentare werden mit # am Zeilenanfang eingeleitet
+
+# Ntfy-Server URL (Standard: ntfy.sh)
+NTFY_SERVER=ntfy.sh
+
+# Authentifizierungstoken (optional, falls erforderlich)
+# Token im ntfy Dashboard generieren: https://ntfy.sh/app
+# NTFY_TOKEN=your_token_here
+
+# Überwachungsintervall in Sekunden
+CHECK_INTERVAL=60
+
+# Standard ntfy Topic
+# Topic auf dem Server erstellen: https://ntfy.sh/app
+NTFY_TOPIC=tailmon_alerts
+
+# Gerätekonfiguration
+# Platzhalter: {device} = Gerätename, {status} = online/offline
+# Datum/Zeit Platzhalter: {date} = dd.mm.yyyy, {time} = hh:mm:ss
+
+# Beispiel 1: Nur bei Online-Nachricht
+[laptop-01]
+OnOnline=ntfy, "{device} Online", "{date} {time} - {device} ist jetzt online"
+# OnOffline=ntfy, "{device} Offline", "{device} ist jetzt offline"
+
+# Beispiel 2: Bei jeder Statusänderung
+[desktop-server]
+OnChange=ntfy, "Gerät Statuswechsel", "{date} {time} - {device} ist jetzt {status}"
+
+# Beispiel 3: Mit eigener Topic
+[mobile-device]
+OnChange=ntfy, "Gerät Statuswechsel", "{date} {time} - {device} ist jetzt {status}", mobile_alerts
+
+# Beispiel 4: Mehrere Aktionen
+[router-01]
+OnOnline=ntfy, "{device} Online", "{date} {time} - {device} ist jetzt online"
+OnOffline=ntfy, "{device} Offline", "{date} {time} - {device} ist jetzt offline"
+OnChange=ntfy, "Zustandsänderung", "{date} {time} - {device} hat den Zustand geändert zu {status}"

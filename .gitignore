@@ -1,0 +1,18 @@
+# TailMon - Ignore sensitive and runtime files
+# Kopieren Sie tailmon.conf.sample nach tailmon.conf und passen Sie es an
+
+# Personal configuration
+tailmon.conf
+
+# Runtime files
+tailmon.log
+tailmon.state
+
+# Backup files
+backup/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
